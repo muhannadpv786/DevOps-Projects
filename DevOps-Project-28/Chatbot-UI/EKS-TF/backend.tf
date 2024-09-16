@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "tetris-bucket"
-    region         = "us-east-1"
+    region         = "ap-south-1"
     key            = "Chatbot-UI/EKS-TF/terraform.tfstate"
     dynamodb_table = "Lock-Files"
     encrypt        = true
