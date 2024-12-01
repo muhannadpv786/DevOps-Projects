@@ -60,15 +60,15 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build -t petclinic1 ."
-                       sh "docker tag petclinic1 sreedhar8897/petclinic:latest "
-                       sh "docker push sreedhar8897/petclinic:latest "
+                       sh "docker tag petclinic1 muhannadpv/petclinic:latest "
+                       sh "docker push muhannadpv/petclinic:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image sreedhar8897/petclinic:latest > trivy.txt" 
+                sh "trivy image muhannadpv/petclinic:latest > trivy.txt" 
             }
         }
         stage('Clean up containers') {   //if container runs it will stop and remove this block
@@ -111,7 +111,7 @@ pipeline{
     }
         stage('Deploy to conatiner'){
             steps{
-                sh 'docker run -d --name pet1 -p 8082:8080 sreedhar8897/petclinic:latest'
+                sh 'docker run -d --name pet1 -p 8082:8080 muhannadpv/petclinic:latest'
             }
         }
         stage("Deploy To Tomcat"){
@@ -125,7 +125,7 @@ pipeline{
             body: "Project: ${env.JOB_NAME}<br/>" +
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
                 "URL: ${env.BUILD_URL}<br/>",
-            to: 'madithati123@gmail.com',
+            to: 'p.vmuhannad@gmail.com',
             attachmentsPattern: 'trivy.txt'
         }
     }
