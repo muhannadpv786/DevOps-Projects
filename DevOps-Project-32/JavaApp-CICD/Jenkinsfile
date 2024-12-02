@@ -94,7 +94,7 @@ pipeline{
               URL de build: ${env.BUILD_URL}
               """
              mail(
-             to: 'p.vmuhannad876@gmail.com',
+             to: 'p.vmuhannad786@gmail.com',
              subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", 
              body: approvalMailContent,
              mimeType: 'text/plain'
